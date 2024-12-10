@@ -274,11 +274,11 @@ void _onButtonPressed(String symbol) {
   });
 }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      backgroundColor: const Color.fromARGB(255, 232, 232, 224),
+      appBar: AppBar( backgroundColor:const Color.fromARGB(255, 232, 232, 224),
         title: const Text('Krishika Calculator App'),
       ),
       body: Padding(
@@ -301,19 +301,26 @@ void _onButtonPressed(String symbol) {
               ),
               const SizedBox(height: 8),
               // Display for operation history
-              TextFormField(
-                textDirection: TextDirection.rtl,
-                controller: _historyController,
-                decoration: const InputDecoration(
-                  border: UnderlineInputBorder(),
+              Container( 
+                  height: 12
+                  , 
+                  child: TextFormField(
+                    textDirection: TextDirection.rtl,
+                    controller: _historyController,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      
+                    ),
+                    style: const TextStyle(
+                      fontSize: 16,               
+                      fontWeight: FontWeight.w600, 
+                      color: Color.fromARGB(255, 61, 57, 57),          // Font color
+                    ),
+                    readOnly: true,
+                  ),
                 ),
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-                readOnly: true,
-              ),
-              const SizedBox(height: 8),
+
+              const SizedBox(height: 10),
               // Buttons for calculator
               Expanded(
                 child: GridView.builder(
@@ -326,17 +333,18 @@ void _onButtonPressed(String symbol) {
                   itemBuilder: (context, index) {
                     return ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.amber,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(0),
-                        ),
+                        backgroundColor: const Color.fromARGB(255, 113, 97, 130),
+                        // shape: RoundedRectangleBorder(
+                        //   borderRadius: BorderRadius.circular(0),
+                        // ),
                       ),
                       onPressed: () => _onButtonPressed(lstSymbols[index]),
                       child: Text(
                         lstSymbols[index],
                         style: const TextStyle(
-                          fontSize: 20,
+                          fontSize: 28,
                           fontWeight: FontWeight.bold,
+                          color: Colors.black87
                         ),
                       ),
                     );
